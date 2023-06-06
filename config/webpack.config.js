@@ -359,7 +359,7 @@ module.exports = function (webpackEnv) {
         shouldUseSourceMap && {
           enforce: 'pre',
           exclude: /@babel(?:\/|\\{1,2})runtime/,
-          test: /\.(js|mjs|jsx|ts|tsx|css)$/,
+          test: /\.(js|jsx|mjs|cjs|ts|tsx|css)$/,
           loader: require.resolve('source-map-loader'),
         },
         {
@@ -414,13 +414,13 @@ module.exports = function (webpackEnv) {
                 },
               ],
               issuer: {
-                and: [/\.(ts|tsx|js|jsx|md|mdx)$/],
+                and: [/\.(js|jsx|mjs|cjs|ts|tsx|md|mdx)$/],
               },
             },
             // Process application JS with Babel.
             // The preset includes JSX, Flow, TypeScript, and some ESnext features.
             {
-              test: /\.(js|mjs|jsx|ts|tsx)$/,
+              test: /\.(js|jsx|mjs|cjs|ts|tsx)$/,
               include: paths.appSrc,
               loader: require.resolve('babel-loader'),
               options: {
@@ -600,7 +600,7 @@ module.exports = function (webpackEnv) {
               // its runtime that would otherwise be processed through "file" loader.
               // Also exclude `html` and `json` extensions so they get processed
               // by webpacks internal loaders.
-              exclude: [/^$/, /\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+              exclude: [/^$/, /\.(js|jsx|mjs|cjs|ts|tsx)$/, /\.html$/, /\.json$/],
               type: 'asset/resource',
             },
             // ** STOP ** Are you adding a new loader?
