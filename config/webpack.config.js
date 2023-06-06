@@ -305,6 +305,8 @@ module.exports = function (webpackEnv) {
     resolve: {
       // MAESTRA FALLBACK
       fallback: {
+        https: require.resolve('https-browserify'),
+        http: require.resolve('stream-http')
       },
 
       // This allows you to set a fallback for where webpack should look for modules.
